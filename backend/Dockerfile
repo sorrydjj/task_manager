@@ -1,0 +1,8 @@
+FROM python:3.9-alpine
+RUN mkdir /app
+WORKDIR /app
+COPY requirements.txt /app
+COPY src /app/src
+RUN apk update \
+    && apk add postgresql gcc python3-dev musl-dev libffi-dev
+RUN pip install -r requirements.txt
